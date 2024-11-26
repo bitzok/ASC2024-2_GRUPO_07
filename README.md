@@ -36,3 +36,16 @@ El repositorio está organizado de la siguiente manera:
 └── requerimientos.txt # Dependencias necesarias para ejecutar el código.
 
 ---
+
+## Uso del sistema
+Es recomedable crear un entorno virtual para la descarga de las librerias y luego su compilación
+
+- En su terminal escriba 
+python -m venv venv
+
+- Luego entre a su entorno virtual
+.\venv\Scripts\activate
+
+- Ahora descargue los requerimientos
+pip install -r requirements.txt
+
