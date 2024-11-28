@@ -22,30 +22,81 @@ El objetivo es analizar y comparar ambos enfoques, destacando sus ventajas, limi
 ## Estructura del Repositorio  
 El repositorio está organizado de la siguiente manera:  
 
-📂 ProyectoFinal-PenduloInvertido
-├── 📁 control_moderno
-│ ├── PID_manual.ipynb # Diseño y simulación del controlador PID manual.
-│ ├── PID_optimizacion_genetica.ipynb # Optimización del PID con algoritmos genéticos.
-│ └── resultados_graficos # Gráficos comparativos entre PID manual y optimizado.
-├── 📁 control_inteligente
-│ ├── agente_qlearning.py # Implementación del agente basado en Q-learning.
-│ ├── agente_sarsa.py # Implementación del agente basado en SARSA.
-│ ├── configuraciones_cartpole # Parámetros y configuraciones del entorno.
-│ └── resultados_graficos # Gráficos de recompensas y desempeño del agente.
-├── README.md # Descripción del proyecto y pasos para ejecutarlo.
-└── requerimientos.txt # Dependencias necesarias para ejecutar el código.
+```plaintext
+ASC2024-2_GRUPO_07/
+├───Artículos
+├───ProyectoFinal        # código del proyecto
+│   ├── evaluar.py
+│   ├── main.py          # código para ejecutar el proyecto
+│   └── train.py
+│   .gitignore
+│   README.md
+│   requirements.txt
+│   setup.bat            # script instalación Windows
+└───setup.sh             # script instalación Unix
+
+```
 
 ---
 
-## Uso del sistema
-Es recomedable crear un entorno virtual para la descarga de las librerias y luego su compilación
+## Instalación
 
-- En su terminal escriba 
-python -m venv venv
+### Opción 1: Instalación Manual
 
-- Luego entre a su entorno virtual
-.\venv\Scripts\activate
+Pasos para configurar el entorno manualmente.
 
-- Ahora descargue los requerimientos
-pip install -r requirements.txt
+1. **Crear un entorno virtual**:
+   - En terminal, crear un entorno virtual ejecutando:
+
+     ```bash
+     python -m venv venv
+     ```
+
+2. **Activar el entorno virtual**:
+   - **En Unix**:
+
+     ```bash
+     source venv/bin/activate
+     ```
+
+   - **En Windows**:
+
+     ```batch
+     .\venv\Scripts\activate
+     ```
+
+3. **Instalar las dependencias**:
+   Luego de activar el entorno, instalar las dependencias desde `requirements.txt`:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Opción 2: Instalación Automática con Scripts
+
+Para instalación automática, se puede usar los scripts para simplificar la configuración del entorno.
+
+1. **Ejecutar el script en Unix**:
+   - Dar permisos de ejecución al script `setup.sh`:
+
+     ```bash
+     chmod +x setup.sh  # por única vez
+     ```
+
+   - Luego, ejecuta el script:
+
+     ```bash
+     ./setup.sh
+     ```
+
+2. **Ejecutar el script en Windows**:
+   - En la terminal de Windows, ejecuta el script `setup.bat`:
+
+     ```batch
+     setup.bat
+     ```
+
+Ambos scripts actualizarán `pip` y `setuptools` a las versiones correctas, instalarán las dependencias desde `requirements.txt`, y configurarán el entorno virtual automáticamente.
+
+---
 
