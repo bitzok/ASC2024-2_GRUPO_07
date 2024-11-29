@@ -24,6 +24,7 @@ def epsilon_greedy(state, q_table, epsilon, action_space):
 
 def train(env, n_bins, num_episodes, alpha, gamma, epsilon, epsilon_decay, epsilon_min):
     q_table = initialize_q_table(n_bins, env.action_space.n)
+    rewards=[]
 
     for episode in range(num_episodes):
         state = env.reset()
@@ -36,6 +37,9 @@ def train(env, n_bins, num_episodes, alpha, gamma, epsilon, epsilon_decay, epsil
             next_state, reward, done, _ = env.step(action)
             next_state = discretize_state(next_state, n_bins)
 
+            # Modificar recompensa
+            #reward += 1.0 - (abs(state[2]) * 2.0) - (abs(state[0]) * 0.5)
+
             # Actualizar la tabla Q
             best_next_action = np.argmax(q_table[next_state])
             q_table[state][action] += alpha * (
@@ -46,9 +50,12 @@ def train(env, n_bins, num_episodes, alpha, gamma, epsilon, epsilon_decay, epsil
 
             env.render()
 
+        # Guardar la recompensa total de este episodio
+        rewards.append(total_reward)
+
         if epsilon > epsilon_min:
             epsilon *= epsilon_decay
 
         print(f'Episodio {episode + 1}/{num_episodes} - Recompensa total: {total_reward}')
 
-    return q_table
+    return q_table, rewards

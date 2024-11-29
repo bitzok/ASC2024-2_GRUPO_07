@@ -1,4 +1,5 @@
 import gym
+import matplotlib.pyplot as plt
 from train import train
 from evaluar import evaluar
 
@@ -11,11 +12,18 @@ def main():
     epsilon = 1.0
     epsilon_decay = 0.995
     epsilon_min = 0.1
-    num_episodes = 100
+    num_episodes = 200
 
     # Entrenar el agente
     print("Iniciando el entrenamiento...")
-    q_table = train(env, n_bins, num_episodes, alpha, gamma, epsilon, epsilon_decay, epsilon_min)
+    q_table , rewards = train(env, n_bins, num_episodes, alpha, gamma, epsilon, epsilon_decay, epsilon_min)
+
+    # Visualizar recompensas
+    plt.plot(rewards)
+    plt.xlabel('Episodios')
+    plt.ylabel('Recompensa acumulada')
+    plt.title('Progreso del entrenamiento')
+    plt.show()
 
     # Evaluar el agente
     print("\nIniciando la evaluación...")
